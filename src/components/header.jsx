@@ -1,10 +1,15 @@
 import "./header.scss";
 
-const Header = () => {
+import ConnectButton from "./connectButton";
+
+const Header = ({ isConnected, connectPhantom }) => {
   return (
     <div className="header">
-      <img src="logo.png" className="logo" />
-      <div className="headerText">Mooshroom Pane</div>
+      <div className="title">
+        <img src="logo.png" className="logo" />
+        <div className="headerText">Mooshroom Pane</div>
+      </div>
+      {isConnected ? null : <ConnectButton connectPhantom={connectPhantom} />}
     </div>
   );
 };

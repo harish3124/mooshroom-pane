@@ -3,7 +3,6 @@ import "./App.scss";
 
 import GifContainer from "./components/gifContainer";
 import Header from "./components/header";
-import ConnectButton from "./components/connectButton";
 
 const TEST_GIFS = [
   "https://media.giphy.com/media/2PWBLDJ2KtB1X6o9vY/giphy.gif",
@@ -49,12 +48,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      {isConnected ? (
-        <GifContainer gifList={TEST_GIFS} />
-      ) : (
-        <ConnectButton connectPhantom={connectPhantom} />
-      )}
+      <Header isConnected={isConnected} connectPhantom={connectPhantom} />
+      {isConnected ? <GifContainer gifList={TEST_GIFS} /> : null}
     </div>
   );
 }
