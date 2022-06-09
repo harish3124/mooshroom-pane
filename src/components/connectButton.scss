@@ -1,0 +1,16 @@
+@use "../theme.scss" as theme;
+
+.connectButton {
+  flex: 1;
+
+  display: flex;
+  background: -webkit-linear-gradient(left, #60c657, #35aee2);
+  border-radius: 1rem;
+  width: 10rem;
+  height: 3rem;
+  max-height: 3rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  color: theme.$background-2;
+}

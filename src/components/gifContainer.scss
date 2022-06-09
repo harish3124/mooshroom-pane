@@ -1,0 +1,15 @@
+@use "../theme.scss" as theme;
+
+.gifGrid {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+}
+
+.gif {
+  width: 100%;
+  border: theme.$background-2 solid 0.25rem;
+}

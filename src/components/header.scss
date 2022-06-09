@@ -1,0 +1,16 @@
+.header {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 5rem;
+  padding-right: 1rem;
+}
+
+.headerText {
+  font-size: 3.5rem;
+  font-weight: 600;
+}

@@ -1,0 +1,17 @@
+@use "./theme.scss" as theme;
+
+body {
+  background-color: theme.$background;
+  color: theme.$text;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 2rem;
+  min-height: 100vh;
+}
