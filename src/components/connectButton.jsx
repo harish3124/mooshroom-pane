@@ -1,8 +1,6 @@
-import "./connectButton.scss";
-
 const ConnectButton = ({ connectPhantom }) => {
   return (
-    <div className="connectButton" onClick={() => connectPhantom(true)}>
+    <div className="btn" onClick={() => connectPhantom(true)}>
       Connect Wallet
     </div>
   );

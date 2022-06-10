@@ -5,6 +5,7 @@ body {
   color: theme.$text;
   text-align: center;
   min-height: 100vh;
+  user-select: none;
 }
 
 .App {
@@ -13,4 +14,22 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+}
+
+.btn {
+  flex: 1;
+  top: 0;
+
+  cursor: pointer;
+
+  display: flex;
+  background: -webkit-linear-gradient(left, #60c657, #35aee2);
+  border-radius: 1rem;
+  width: 10rem;
+  height: 3rem;
+  max-height: 3rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  color: theme.$background-2;
 }

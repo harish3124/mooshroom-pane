@@ -1,6 +1,7 @@
 import "./header.scss";
 
 import ConnectButton from "./connectButton";
+import GifInput from "./gifInput";
 
 const Header = ({ isConnected, connectPhantom }) => {
   return (
@@ -9,7 +10,11 @@ const Header = ({ isConnected, connectPhantom }) => {
         <img src="logo.png" className="logo" />
         <div className="headerText">Mooshroom Pane</div>
       </div>
-      {isConnected ? null : <ConnectButton connectPhantom={connectPhantom} />}
+      {isConnected ? (
+        <GifInput />
+      ) : (
+        <ConnectButton connectPhantom={connectPhantom} />
+      )}
     </div>
   );
 };
