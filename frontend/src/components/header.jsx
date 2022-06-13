@@ -3,7 +3,7 @@ import "./header.scss";
 import ConnectButton from "./connectButton";
 import GifInput from "./gifInput";
 
-const Header = ({ isConnected, connectPhantom }) => {
+const Header = ({ isConnected, connectPhantom, gifList, setGifList }) => {
   return (
     <div className="header">
       <div className="title">
@@ -11,7 +11,7 @@ const Header = ({ isConnected, connectPhantom }) => {
         <div className="headerText">Mooshroom Pane</div>
       </div>
       {isConnected ? (
-        <GifInput />
+        <GifInput gifList={gifList} setGifList={setGifList} />
       ) : (
         <ConnectButton connectPhantom={connectPhantom} />
       )}

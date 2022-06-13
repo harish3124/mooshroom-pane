@@ -16,6 +16,9 @@ const TEST_GIFS = [
 
 function App() {
   const [isConnected, setIsConnected] = useState(false);
+  const [walletAddress, setWalletAddress] = useState(null)
+  const [gifList, setGifList] = useState([])
+
   const { solana } = window;
 
   const ensurePhantom = () => {
@@ -25,6 +28,7 @@ function App() {
       }
     }
   };
+
 
   const connectPhantom = async (forceConnect = false) => {
     try {
@@ -38,18 +42,26 @@ function App() {
 
       resp.publicKey.toString();
       setIsConnected(true);
-    } catch (err) {}
+    } catch (err) { }
   };
+
 
   useEffect(() => {
     ensurePhantom();
     connectPhantom();
   }, []);
 
+
+  useEffect(() => {
+    console.log("Fetching GIFs")
+
+    setGifList(TEST_GIFS);
+  }, [walletAddress]);
+
   return (
     <div className="App">
-      <Header isConnected={isConnected} connectPhantom={connectPhantom} />
-      {isConnected ? <GifContainer gifList={TEST_GIFS} /> : null}
+      <Header isConnected={isConnected} connectPhantom={connectPhantom} gifList={gifList} setGifList={setGifList} />
+      {isConnected ? <GifContainer gifList={gifList} /> : null}
     </div>
   );
 }

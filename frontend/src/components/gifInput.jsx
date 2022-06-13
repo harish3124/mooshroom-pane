@@ -1,12 +1,11 @@
 import { useState } from "react";
 
-const GifInput = () => {
+const GifInput = ({ gifList, setGifList }) => {
   const [input, setInput] = useState("");
 
-  const updateInput = () => {
-    if (input != "") {
-      console.log(input);
-
+  const updateInput = async () => {
+    if (input !== "") {
+      setGifList([...gifList, input])
       setInput("");
     }
   };
