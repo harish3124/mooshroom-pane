@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("DNgWmEiQBVkuCBrRhbacDAA2Wi3mkkWyofuKquQg2Zur");
 
 #[program]
 pub mod contract {
@@ -14,8 +14,16 @@ pub mod contract {
     }
 
 
-    pub fn add_gif(ctx: Context<AddGif>) -> Result<()> {
+    pub fn add_gif(ctx: Context<AddGif>, gif_link: String) -> Result<()> {
         let base_account = &mut ctx.accounts.base_account;
+        let user = &mut ctx.accounts.user;
+
+        let gif = GifItem{
+            gif_link: gif_link.to_string(),
+            user_address: *user.to_account_info().key,
+        };
+
+        base_account.gif_list.push(gif);
         base_account.total_gifs += 1;
 
         Ok(())
@@ -37,9 +45,19 @@ pub struct Start<'info> {
 pub struct AddGif<'info> {
     #[account(mut)]
     pub base_account: Account<'info, BaseAccount>,
+    #[account(mut)]
+    pub user: Signer<'info>,
+}
+
+
+#[derive(Debug, Clone, AnchorSerialize, AnchorDeserialize)]
+pub struct GifItem {
+    pub gif_link: String,
+    pub user_address: Pubkey,
 }
 
 #[account]
 pub struct BaseAccount {
     pub total_gifs: u64,
+    pub gif_list: Vec<GifItem>,
 }
